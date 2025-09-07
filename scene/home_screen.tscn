@@ -1,0 +1,172 @@
+[gd_scene load_steps=6 format=3 uid="uid://fqs058477p67"]
+
+[ext_resource type="Script" uid="uid://d13flai5822hv" path="res://scripts/home_screen.gd" id="1_uh1ad"]
+
+[sub_resource type="Animation" id="Animation_h6j3m"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_uh1ad"]
+resource_name = "fade_in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.904699),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_fdq7l"]
+resource_name = "fade_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.904699),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_u6xp0"]
+_data = {
+&"RESET": SubResource("Animation_h6j3m"),
+&"fade_in": SubResource("Animation_uh1ad"),
+&"fade_out": SubResource("Animation_fdq7l")
+}
+
+[node name="ColorRect" type="Control"]
+custom_minimum_size = Vector2(900, 600)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1928.0
+offset_bottom = 720.0
+script = ExtResource("1_uh1ad")
+
+[node name="hitam" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1166.0
+offset_bottom = 662.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_right = 1162.0
+offset_bottom = 660.0
+color = Color(0, 0, 0, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0488851
+anchor_top = 0.412308
+anchor_right = 0.0488851
+anchor_bottom = 0.412308
+offset_left = 0.195541
+offset_top = -4.12308
+offset_right = 300.196
+offset_bottom = 195.877
+scale = Vector2(1.3, 1.3)
+
+[node name="Start" type="Button" parent="ColorRect/VBoxContainer"]
+layout_mode = 2
+text = "START GAME"
+
+[node name="Settings" type="Button" parent="ColorRect/VBoxContainer"]
+layout_mode = 2
+text = "SETTINGS"
+
+[node name="Quit" type="Button" parent="ColorRect/VBoxContainer"]
+layout_mode = 2
+text = "QUIT GAME"
+
+[node name="Label" type="Label" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -391.0
+offset_top = -76.0
+offset_right = -314.0
+offset_bottom = -13.0
+grow_horizontal = 0
+grow_vertical = 2
+scale = Vector2(2, 2)
+text = "LOGO"
+vertical_alignment = 1
+
+[node name="popup" type="Control" parent="ColorRect"]
+visible = false
+layout_mode = 1
+anchor_left = 0.390706
+anchor_top = 0.363636
+anchor_right = 0.390706
+anchor_bottom = 0.363636
+offset_right = 40.0
+offset_bottom = 40.0
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect" type="ColorRect" parent="ColorRect/popup"]
+layout_mode = 1
+offset_right = 256.0
+offset_bottom = 130.0
+color = Color(0.46164, 0.513616, 0.77232, 1)
+
+[node name="Warning" type="VBoxContainer" parent="ColorRect/popup"]
+layout_mode = 1
+offset_right = 200.0
+offset_bottom = 100.0
+scale = Vector2(1.3, 1.3)
+
+[node name="Label" type="Label" parent="ColorRect/popup/Warning"]
+layout_mode = 2
+text = "Iyakah?"
+horizontal_alignment = 1
+
+[node name="Choiches" type="HBoxContainer" parent="ColorRect/popup/Warning"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Yes" type="Button" parent="ColorRect/popup/Warning/Choiches"]
+layout_mode = 2
+text = "Iyah
+"
+
+[node name="No" type="Button" parent="ColorRect/popup/Warning/Choiches"]
+layout_mode = 2
+text = "Enggak"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_u6xp0")
+}
+
+[connection signal="pressed" from="ColorRect/VBoxContainer/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="ColorRect/popup/Warning/Choiches/Yes" to="." method="_on_yes_pressed"]
+[connection signal="pressed" from="ColorRect/popup/Warning/Choiches/No" to="." method="_on_no_pressed"]
+[connection signal="ready" from="AnimationPlayer" to="." method="_on_animation_player_ready"]
