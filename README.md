@@ -1,2 +1,2 @@
 # Thera-Cup-Manage-Your-Clinic
-A simple idle game about a man who wants to build a Cupping Clinic
+A simple casual game about a man who wants to build a Cupping Clinic
