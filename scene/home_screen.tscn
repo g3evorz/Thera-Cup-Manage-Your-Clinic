@@ -119,7 +119,6 @@ text = "LOGO"
 vertical_alignment = 1
 
 [node name="popup" type="Control" parent="ColorRect"]
-visible = false
 layout_mode = 1
 anchor_left = 0.390706
 anchor_top = 0.363636

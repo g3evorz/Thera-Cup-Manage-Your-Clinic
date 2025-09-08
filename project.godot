@@ -15,6 +15,10 @@ run/main_scene="uid://fqs058477p67"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
+[display]
+
+window/stretch/mode="canvas_items"
+
 [dotnet]
 
 project/assembly_name="MAGE_11"

@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://box4ewp21beih"]
+[gd_scene load_steps=26 format=3 uid="uid://box4ewp21beih"]
 
 [ext_resource type="Script" uid="uid://d20ftm2ull06a" path="res://scripts/camera_panner.gd" id="1_duryh"]
 [ext_resource type="Texture2D" uid="uid://cv1sy843ffsoc" path="res://Texture/Wall_left.png" id="2_vf3xj"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dwykgev1ci3wt" path="res://Texture/Wall_right_door.png" id="4_pin8a"]
 [ext_resource type="Texture2D" uid="uid://cjnd24lk8f2g8" path="res://Texture/Floor.png" id="4_sxmuj"]
 [ext_resource type="Texture2D" uid="uid://cxy5iej2i03ia" path="res://Texture/Wall_left_corner.png" id="5_48us0"]
+[ext_resource type="Texture2D" uid="uid://b12a6qcta5tlh" path="res://Texture/Chair_left.png" id="5_b1va5"]
 [ext_resource type="Texture2D" uid="uid://u1etossvldjt" path="res://Texture/Wall_corner.png" id="5_hgldb"]
 [ext_resource type="Texture2D" uid="uid://8h5fpl4t0ar0" path="res://Texture/Wall_left_border.png" id="5_pin8a"]
 [ext_resource type="Texture2D" uid="uid://dwm06t8i6wts" path="res://Texture/Wall_right_corner.png" id="8_48us0"]
@@ -31,6 +32,11 @@ texture_region_size = Vector2i(64, 32)
 0:0/size_in_atlas = Vector2i(1, 2)
 0:0/0 = 0
 0:0/0/texture_origin = Vector2i(0, -13)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wnowi"]
+texture = ExtResource("5_b1va5")
+texture_region_size = Vector2i(64, 32)
+0:1/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fxxox"]
 texture = ExtResource("5_48us0")
@@ -110,6 +116,7 @@ sources/6 = SubResource("TileSetAtlasSource_wb1r6")
 sources/9 = SubResource("TileSetAtlasSource_gcsg6")
 sources/10 = SubResource("TileSetAtlasSource_dl8bk")
 sources/12 = SubResource("TileSetAtlasSource_fxxox")
+sources/11 = SubResource("TileSetAtlasSource_wnowi")
 
 [node name="Clinic" type="Node2D"]
 
@@ -130,4 +137,4 @@ layer_1/tile_data = PackedInt32Array(-393220, 8, 0, -327684, 5, 0, -262148, 5, 0
 layer_2/name = "Layer2"
 layer_2/y_sort_origin = 1
 layer_2/z_index = 1
-layer_2/tile_data = PackedInt32Array(-458752, 6, 0, -393216, 0, 0, -327680, 0, 0, -262143, 1, 0, -262142, 10, 0, -262141, 9, 0, 65537, 12, 0, -196608, 0, 0, -131072, 0, 0, -65536, 0, 0, -262144, 2, 0, -196609, 1, 0, -196610, 1, 0, -196611, 10, 0, -196612, 1, 0)
+layer_2/tile_data = PackedInt32Array(-458752, 6, 0, -393216, 0, 0, -327680, 0, 0, -262143, 1, 0, -262142, 10, 0, -262141, 9, 0, 65537, 12, 0, -196608, 0, 0, -131072, 0, 0, -65536, 0, 0, -262144, 2, 0, -196609, 1, 0, -196610, 1, 0, -196611, 10, 0, -196612, 1, 0, 1, 11, 1)
