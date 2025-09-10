@@ -1,6 +1,6 @@
 extends Control
 @onready var animation_player = $AnimationPlayer
-@onready var popup = $ColorRect/popup
+@onready var popup = $MarginContainer/ColorRect/popup
 
 func _ready() -> void:
 	animation_player.play("fade_in")
