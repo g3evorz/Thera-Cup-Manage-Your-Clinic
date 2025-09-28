@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://box4ewp21beih"]
+[gd_scene load_steps=46 format=3 uid="uid://box4ewp21beih"]
 
 [ext_resource type="Script" uid="uid://g4g5a5r2o8eu" path="res://scripts/game_manager.gd" id="1_2feik"]
 [ext_resource type="Script" uid="uid://d20ftm2ull06a" path="res://scripts/camera_panner.gd" id="1_duryh"]
@@ -199,18 +199,21 @@ sources/19 = SubResource("TileSetAtlasSource_x5wdg")
 sources/20 = SubResource("TileSetAtlasSource_h0eab")
 sources/21 = SubResource("TileSetAtlasSource_6fk4p")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3r8i4"]
+size = Vector2(31, 28)
+
 [node name="Clinic" type="Node2D"]
 
-[node name="World" type="Node2D" parent="."]
+[node name="GameManager" type="Node2D" parent="."]
+script = ExtResource("1_2feik")
 
-[node name="CameraPanner" type="Node2D" parent="World"]
+[node name="CameraPanner" type="Node2D" parent="GameManager"]
 script = ExtResource("1_duryh")
-pan_limit_left = -300.0
-pan_limit_right = 300.0
 
-[node name="Camera2D" type="Camera2D" parent="World/CameraPanner"]
+[node name="Camera2D" type="Camera2D" parent="GameManager/CameraPanner"]
 
-[node name="TileMap" type="TileMap" parent="World"]
+[node name="TileMap" type="TileMap" parent="GameManager"]
+position = Vector2(-137, -20)
 tile_set = SubResource("TileSet_duryh")
 format = 2
 layer_0/tile_data = PackedInt32Array(-131070, 7, 0, -196607, 7, 0, -262144, 7, 0, -131073, 7, 0, -65537, 7, 0, -65536, 7, 0, -1, 7, 0, -196609, 7, 0, -196608, 7, 0, -131072, 7, 0, -131071, 7, 0, -65534, 7, 0, 2, 7, 0, 1, 7, 0, -65535, 7, 0, -65533, 7, 0, 3, 7, 0, 65539, 15, 0, 65538, 7, 0, 65537, 7, 0, 65536, 7, 0, 0, 7, 0, 65535, 7, 0, 65534, 7, 0, 131071, 7, 0, 65540, 7, 0, 131070, 7, 0, -262145, 7, 0, -327680, 7, 0, -327679, 7, 0, -327678, 7, 0, -262142, 7, 0, -262141, 7, 0, -327677, 7, 0, -327676, 7, 0, -262140, 7, 0, -196604, 7, 0, -131068, 7, 0, -65532, 7, 0, 4, 7, 0, -131069, 7, 0, -196605, 7, 0, -196606, 7, 0, -262143, 7, 0, -262146, 7, 0, -196610, 7, 0, -131074, 7, 0, -65538, 7, 0, -2, 7, 0)
@@ -227,61 +230,34 @@ layer_3/y_sort_origin = 1
 layer_3/z_index = 1
 layer_3/tile_data = PackedInt32Array(-131072, 13, 0, -131071, 16, 0, 65538, 14, 0, -262146, 18, 0, -262145, 19, 0, -393215, 20, 0, -327678, 21, 0)
 
-[node name="Resepsionis" type="Area2D" parent="World"]
-position = Vector2(128, 16)
+[node name="Resepsionis" type="Area2D" parent="GameManager"]
 
-[node name="Posisi1" type="Marker2D" parent="World/Resepsionis"]
-position = Vector2(-12, 6)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GameManager/Resepsionis"]
+position = Vector2(-14, 5)
+shape = SubResource("RectangleShape2D_3r8i4")
 
-[node name="Posisi2" type="Marker2D" parent="World/Resepsionis"]
-position = Vector2(-27, 15)
+[node name="CanvasLayer" type="CanvasLayer" parent="GameManager"]
 
-[node name="Posisi3" type="Marker2D" parent="World/Resepsionis"]
-position = Vector2(-42, 23)
-
-[node name="TreatmentRooms" type="Node2D" parent="World"]
-
-[node name="RoomPos_1" type="Marker2D" parent="World/TreatmentRooms"]
-position = Vector2(127, -79)
-
-[node name="RoomPos_2" type="Marker2D" parent="World/TreatmentRooms"]
-
-[node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("queue_positions")]
-script = ExtResource("1_2feik")
-queue_positions = [NodePath("../World/Resepsionis/Posisi1"), NodePath("../World/Resepsionis/Posisi2"), NodePath("../World/Resepsionis/Posisi3")]
-
-[node name="PatientSpawnerTimer" type="Timer" parent="GameManager"]
-wait_time = 3.0
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="right_up" type="MarginContainer" parent="CanvasLayer"]
+[node name="MarginContainer" type="MarginContainer" parent="GameManager/CanvasLayer"]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -256.0
+offset_left = -400.0
 offset_bottom = 51.0
 grow_horizontal = 0
 theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 
-[node name="Start Day" type="Button" parent="CanvasLayer/right_up"]
+[node name="HBoxContainer" type="HBoxContainer" parent="GameManager/CanvasLayer/MarginContainer"]
+layout_direction = 3
+layout_mode = 2
+theme_override_constants/separation = 250
+
+[node name="Start Day" type="Button" parent="GameManager/CanvasLayer/MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 text = "START"
 
-[node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer"]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -20.0
-offset_right = 20.0
-offset_bottom = 40.0
-grow_horizontal = 2
-theme_override_constants/margin_top = 25
-
-[node name="Money" type="Label" parent="CanvasLayer/MarginContainer2"]
+[node name="Money" type="Label" parent="GameManager/CanvasLayer/MarginContainer/HBoxContainer"]
 layout_mode = 2
-
-[connection signal="timeout" from="GameManager/PatientSpawnerTimer" to="GameManager" method="_on_patient_spawner_timer_timeout"]
-[connection signal="pressed" from="CanvasLayer/right_up/Start Day" to="GameManager" method="_on_start_day_pressed"]
+text = "MONEY"
