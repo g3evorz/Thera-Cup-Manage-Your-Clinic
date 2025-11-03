@@ -3,16 +3,16 @@ extends Node2D
 @onready var camera = $Camera2D
 
 # === VARIABEL BARU UNTUK BATASAN PANNING ===
-@export var pan_limit_left = -500.0   # BARIS BARU: Batas paling kiri
-@export var pan_limit_right = 500.0  # BARIS BARU: Batas paling kanan
-@export var pan_limit_top = -300.0    # BARIS BARU: Batas paling atas
-@export var pan_limit_bottom = 300.0 # BARIS BARU: Batas paling bawah
+@export var pan_limit_left = -300.0   # BARIS BARU: Batas paling kiri
+@export var pan_limit_right = 300.0  # BARIS BARU: Batas paling kanan
+@export var pan_limit_top = -200.0    # BARIS BARU: Batas paling atas
+@export var pan_limit_bottom = 200.0 # BARIS BARU: Batas paling bawah
 
 var panning = false
 var pan_start_position = Vector2.ZERO
 var pan_speed = 1.0
 var zoom_speed = 0.1
-var min_zoom = 0.5
+var min_zoom = 1.0
 var max_zoom = 2.0
 
 func _input(event):

@@ -1,0 +1,39 @@
+[gd_scene load_steps=4 format=3 uid="uid://c244hs3lmppvv"]
+
+[ext_resource type="Script" uid="uid://cmpv5b4uec1i8" path="res://scripts/treatment_room.gd" id="1_jv3d0"]
+[ext_resource type="Texture2D" uid="uid://c7mhv1k78bfh6" path="res://Texture/bed_1.png" id="2_wupmm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wupmm"]
+size = Vector2(82.5, 73)
+
+[node name="TreatmentRoom" type="Area2D"]
+script = ExtResource("1_jv3d0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(4, 0)
+texture = ExtResource("2_wupmm")
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 0)
+shape = SubResource("RectangleShape2D_wupmm")
+
+[node name="CleaningTimer" type="Timer" parent="."]
+
+[node name="CleaningBar" type="TextureProgressBar" parent="."]
+offset_left = -44.0
+offset_top = -62.0
+offset_right = -43.0
+offset_bottom = -61.0
+
+[node name="PatientPosition" type="Marker2D" parent="."]
+
+[node name="TreatmentTimer" type="Timer" parent="."]
+wait_time = 12.0
+one_shot = true
+
+[node name="TreatmentBar" type="TextureProgressBar" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
